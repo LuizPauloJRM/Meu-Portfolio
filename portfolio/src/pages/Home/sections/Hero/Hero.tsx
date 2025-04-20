@@ -1,21 +1,40 @@
-import { Container, Grid, styled, Typography, Button } from "@mui/material";
+import { Container, Grid, styled, Typography } from "@mui/material";
 import Avatar from "../../../../assets/images/LuizPaulo.jpeg";
+import StyledButtonComponent from "../../../../components/StyledButton/StyledButton"; // Import do botão estilizado
 
 const Hero = () => {
     const StyledHero = styled("div")(({ theme }) => ({
         backgroundColor: theme.palette.primary.main,
+        height: "100vh",
+        display: "flex",
+        alignItems: "center",
         padding: "20px",
+        [theme.breakpoints.up("xs")]: {
+            paddingTop: "100px",
+        },
+        [theme.breakpoints.up("md")]: {
+            paddingTop: "0px",
+        },
     }));
 
     const StyledImg = styled("img")(() => ({
-        width: "100%",
+        width: "90%",
         maxWidth: "200px",
         borderRadius: "15px",
+        border: "1px solid #fff",
     }));
+
+    const handleDownloadCV = () => {
+        alert("Download do CV iniciado!");
+    };
+
+    const handleContact = () => {
+        alert("Entrando em contato!");
+    };
 
     return (
         <StyledHero>
-            <Container>
+            <Container maxWidth="lg">
                 <Grid container spacing={2} alignItems="center">
                     <Grid item xs={12} md={4} display="flex" justifyContent="center">
                         <StyledImg src={Avatar} alt="Luiz Paulo" />
@@ -37,14 +56,14 @@ const Hero = () => {
                         </Typography>
                         <Grid container spacing={2} justifyContent="flex-start">
                             <Grid item xs={12} md={6}>
-                                <Button variant="contained" color="secondary" fullWidth>
+                                <StyledButtonComponent onClick={handleDownloadCV}>
                                     Download CV
-                                </Button>
+                                </StyledButtonComponent>
                             </Grid>
                             <Grid item xs={12} md={6}>
-                                <Button variant="outlined" color="secondary" fullWidth>
+                                <StyledButtonComponent onClick={handleContact}>
                                     Contato
-                                </Button>
+                                </StyledButtonComponent>
                             </Grid>
                         </Grid>
                     </Grid>

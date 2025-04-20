@@ -2,9 +2,10 @@ import { styled } from "@mui/material";
 import React from "react";
 interface StyledButtonProps {
     children: React.ReactNode;
+    onClick?: () => void;
 }
 // Obtém o tema do Material-UI
-const StyledButtonComponent: React.FC<StyledButtonProps> = ({ children }) => {
+const StyledButtonComponent: React.FC<StyledButtonProps> = ({ children, onClick }) => {
     const StyledButton = styled("button")(({ theme }) => ({
         backgroundColor: "transparent",
         border: `1px solid ${theme.palette.primary.contrastText}`,
@@ -22,7 +23,7 @@ const StyledButtonComponent: React.FC<StyledButtonProps> = ({ children }) => {
     }));
 
     return (
-        <StyledButton>
+        <StyledButton onClick={onClick}>
             {children}
         </StyledButton>
     );
